@@ -9,20 +9,22 @@ const setDate = () => {
 
   var birthDateObj = new Date(year, month, day);
   var today = new Date();
-
-  var age = today.getFullYear() - birthDateObj.getFullYear();
-  var monthDiff = today.getMonth() - birthDateObj.getMonth();
-  var dayDiff = today.getDate() - birthDateObj.getDate();
   if (
     (birthDateObj.getFullYear() >= today.getFullYear() &&
       birthDateObj.getMonth() >= today.getMonth() &&
       birthDateObj.getDate() >= today.getDate()) ||
-    birthDateObj.getFullYear() > today.getFullYear()
+    birthDateObj.getFullYear() > today.getFullYear() ||
+    year <= 0 ||
+    month < 0 ||
+    day <= 0
   ) {
     year_result.value = 0;
     month_result.value = 0;
     day_result.value = 0;
   } else {
+    var age = today.getFullYear() - birthDateObj.getFullYear();
+    var monthDiff = today.getMonth() - birthDateObj.getMonth();
+    var dayDiff = today.getDate() - birthDateObj.getDate();
     if (monthDiff < 0) {
       if (age > 0) {
         age--;
@@ -34,7 +36,7 @@ const setDate = () => {
       }
     } else {
       if (dayDiff > 0 || monthDiff > 1) {
-        if (month > 1) {
+        if (monthDiff > 1) {
           monthDiff--;
         }
         if (dayDiff < 0) {

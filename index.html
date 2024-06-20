@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="age-container">
+            <div class="age-div">
+                <h1 class="age-title">
+                    age calculator
+                </h1>
+                <div class="age-img">
+                    <img src="img/group-age-diverse-people_23-2148453653.jpg" alt="">
+                </div>
+            </div>
+            <div class="age-calculator-div">
+                <h1 class="age-calculator-title"><img src="img/calendar.png" alt="">your birth day</h1>
+                <div class="date">
+                    <div class="date-item">
+                        <input type="number" oninput="setDate()" onchange="setDate()" min="1" value="25" max="31" id="day-input">
+                        <p class="date-title">day</p>
+                    </div>
+                    <div class="date-item">
+                        <input type="number" oninput="setDate()" onchange="setDate()" min="1" value="08" max="12" id="month-input">
+                        <p class="date-title">month</p>
+                    </div>
+                    <div class="date-item">
+                        <input oninput="setDate()" onchange="setDate()" type="number" min="500" value="2003" max="2024" id="year-input">
+                        <p class="date-title">year</p>
+                    </div>
+                </div>
+                <h1 class="age-calculator-title"><img src="img/growth.png" alt="">your age till today</h1>
+                <div class="date">
+                    <div class="date-item">
+                        <input type="number" readonly maxlength="3" minlength="4" min="500" max="2024" id="year-result"  class="date-input">
+                        <p class="date-title">year</p>
+                    </div>
+                    <div class="date-item">
+                        <input type="number" readonly maxlength="2" minlength="1" min="1" max="12" id="month-result"  class="date-input">
+                        <p class="date-title">month</p>
+                    </div>
+                    <div class="date-item">
+                        <input type="number" readonly maxlength="2" minlength="1" min="1" max="31" id="day-result" class="date-input">
+                        <p class="date-title">day</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>

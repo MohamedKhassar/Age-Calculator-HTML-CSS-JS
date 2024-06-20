@@ -1,33 +1,56 @@
-const day_input = document.querySelector("#day-input");
-const month_input = document.querySelector("#month-input");
-const year_input = document.querySelector("#year-input");
 const day_result = document.querySelector("#day-result");
 const month_result = document.querySelector("#month-result");
 const year_result = document.querySelector("#year-result");
 
 const setDate = () => {
-  const date_input = new Date(
-    month_input.value + "-" + day_input.value + "-" + year_input.value
-  );
-  let day;
-  let month;
-  let year = new Date().getFullYear() - date_input.getFullYear();
-  if (new Date().getMonth() < date_input.getMonth()) {
-    month = 10 - Number(date_input.getMonth()) + Number(date_input.getMonth());
-    year--;
-  } else {
-    month = Number(new Date().getMonth()) - Number(date_input.getMonth());
-  }
-  if (date_input.getDate() > new Date().getDate()) {
-    day = 30 - Number(date_input.getDate()) + Number(new Date().getDate());
-  } else {
-    month--;
-    day = Number(new Date().getDate()) - Number(date_input.getDate());
-  }
+  var day = parseInt(document.getElementById("day-input").value);
+  var month = parseInt(document.getElementById("month-input").value) - 1; // Months are 0-based in JavaScript Date
+  var year = parseInt(document.getElementById("year-input").value);
 
-  year_result.value = year;
-  month_result.value = month;
-  day_result.value = day;
+  var birthDateObj = new Date(year, month, day);
+  var today = new Date();
+
+  var age = today.getFullYear() - birthDateObj.getFullYear();
+  var monthDiff = today.getMonth() - birthDateObj.getMonth();
+  var dayDiff = today.getDate() - birthDateObj.getDate();
+  if (
+    (birthDateObj.getFullYear() >= today.getFullYear() &&
+      birthDateObj.getMonth() >= today.getMonth() &&
+      birthDateObj.getDate() >= today.getDate()) ||
+    birthDateObj.getFullYear() > today.getFullYear()
+  ) {
+    year_result.value = 0;
+    month_result.value = 0;
+    day_result.value = 0;
+  } else {
+    if (monthDiff < 0) {
+      if (age > 0) {
+        age--;
+      }
+      monthDiff += 12;
+      if (dayDiff < 0) {
+        dayDiff += 31;
+        monthDiff--;
+      }
+    } else {
+      if (dayDiff > 0 || monthDiff > 1) {
+        if (month > 1) {
+          monthDiff--;
+        }
+        if (dayDiff < 0) {
+          dayDiff += 31;
+        }
+      } else {
+        if (dayDiff < 0) {
+          dayDiff += 31;
+        }
+      }
+    }
+
+    year_result.value = age;
+    month_result.value = monthDiff;
+    day_result.value = dayDiff;
+  }
 };
 
 window.addEventListener("load", () => setDate());

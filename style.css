@@ -86,6 +86,7 @@ body {
 .age-calculator-title {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
     gap: 20%;
     font-size: 30px;
@@ -147,3 +148,59 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     gap: 20px;
 }
+
+@media (max-width: 1200px) { 
+    .container {
+        height: 100%;
+        padding: 0px 100px;
+    }
+    
+    .age-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        width: fit-content;
+        align-items: center;
+    }
+    
+    .age-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:20px;
+    }
+    
+    .age-title {
+        font-size: 26px;
+    }
+    
+    .age-img {
+        display: none;
+    }
+    
+    .age-calculator-div {
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 30px;
+        width: 90%;
+    }
+    
+    .age-calculator-title{
+        gap: 10%;
+        font-size: 16px;
+        padding: 10px 20px;
+        width: 15rem;
+        text-align: center;
+    }
+    .age-calculator-title img{
+        width: 30px;
+    }
+    .date {
+        gap: 20px;
+    }
+    .date input,.date p{
+        width:4rem;
+        font-size: 1rem;
+    }
+ }
